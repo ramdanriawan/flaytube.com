@@ -1,0 +1,122 @@
+body{
+	background-color: #eee;
+}
+
+#container-fluid-header{
+	background-color: #333;
+	color: white;
+	padding: 10px;
+}
+
+#container-fluid-footer{
+	background-color: #222;
+	color: white;
+	padding: 10px;	
+}
+
+span>a#logo{
+	font-size: 20px;
+
+}
+
+button.btn.btn-success#btn-get-data{
+margin: 0 10px;
+}
+
+#container-body{
+margin: 15px;
+}
+
+form#form-edit {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+form#form-edit>input {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 480px) {
+	#menu_header{
+		margin-top: 10px;
+	}	
+}
+
+#sidebar{
+	position: absolute;
+	top: 60px;
+	left: 0;
+	background-color: #444;
+	color: white;
+	border-radius: 0 0 25px 0;
+	width: 250px;
+	height: 100vh;
+	border-top: 5px solid #111;
+	z-index: 1;
+}
+
+#sidebar ul li.header{
+	background-origin: #222;
+	font-weight: bold;
+	letter-spacing: 2px;
+	margin: 10px;
+	text-align: center;
+	padding: 5px;
+	list-style-type: none;
+}
+
+#sidebar ul li:not(.header){
+	border-bottom: 1px solid grey;
+}
+
+#container-body{
+	padding: 10px;
+	margin: 
+}
+
+#container-form{
+	margin: 20px 0;
+}
+
+li.first_pagination, li.end_pagination{
+	background-color: #333;
+	color: white;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+thead {
+    background-color: #333;
+    color: white;
+}
+
+form#form-search, div#tab-cari {
+  transform: translate(150px,0px);
+}
+
+#modal-get-data
+{
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 4;
+}
+
+#container-fluid-header{
+	z-index: 1;
+}
+
+div#selengkapnya {
+    text-align: center;
+    padding: 60px;
+}
+
+div#lihat_semua_chanel{
+	background-color: #333;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	letter-spacing: 2px;
+	padding: 10px;
+}

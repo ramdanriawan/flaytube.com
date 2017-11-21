@@ -1,0 +1,84 @@
+
+
+
+<table border="1" style="margin-bottom: 10px">
+            <tr style="background-color: red;">
+                <th>No</th>
+        <th>Kode Rumah Dinas</th>
+        <th>Nama</th>
+        <th>Lokasi</th>
+        <th>Latittude</th>
+        <th>Longitude</th>
+        <th>Kode Type</th>
+        <th>Kode Upb</th>
+        <th>No Register</th>
+        <th>Kode Kabupaten</th>
+        <th>Tanggal Perolehan</th>
+        <th>Bertingkat</th>
+        <th>Beton</th>
+        <th>Luas Lantai</th>
+        <th>Tanggal Dokumen</th>
+        <th>Nomor Dokumen</th>
+        <th>Status Tanah</th>
+        <th>Asal Usul</th>
+        <th>Harga</th>
+        <th>Kondisi</th>
+        <th>Kode Penghuni</th>
+        <th>Foto</th>
+        <th>Keterangan</th>
+        <th>Catatan</th>
+            </tr>                <tr>
+            <td width="80px">1</td>
+            <td>KRD0001</td>
+            <td> Rumah Negara Golongan I Type A Permanen</td>
+            <td> Jl. KH. Achmad Dahlan Pahoman Bandar lampung</td>
+            <td>-5.428333</td>
+            <td>105.271833</td>
+            <td>KT0001</td>
+            <td>KUP0001</td>
+            <td>NOREG001</td>
+            <td>KK0001</td>
+            <td>2017-10-10</td>
+            <td>Ya</td>
+            <td>Ya</td>
+            <td>200</td>
+            <td>2017-10-03</td>
+            <td>NODOK0001</td>
+            <td>Milik Pemda</td>
+            <td>APBN</td>
+            <td>120000000</td>
+            <td>Baik</td>
+            <td>KP0001</td>
+            <td>lokasi_1506955492.jpg</td>
+            <td>-</td>
+            <td>-</td>
+            
+        </tr>
+                                <tr>
+            <td width="80px">2</td>
+            <td>KRD0002</td>
+            <td>Rumah Negara Golongan I Type A Permanen</td>
+            <td> Jl. Dr. Susilo Badar Lampung</td>
+            <td>-5.429359</td>
+            <td>105.267653</td>
+            <td>KT0001</td>
+            <td>KUP0001</td>
+            <td>noreg002</td>
+            <td>KK0001</td>
+            <td>2017-10-19</td>
+            <td>Tidak</td>
+            <td>Ya</td>
+            <td>100</td>
+            <td>2017-10-12</td>
+            <td>nodok0002</td>
+            <td>Milik Pemda</td>
+            <td>APBD</td>
+            <td>100000000</td>
+            <td>Rusak Ringan</td>
+            <td>KP0001</td>
+            <td>lokasi_1506955652.jpg</td>
+            <td>-</td>
+            <td>-</td>
+            
+        </tr>
+                        </table>
