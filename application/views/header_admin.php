@@ -1,4 +1,9 @@
-<?php include "cookie.php"; error_reporting(0); ?>
+
+<?php
+$base_url = base_url();
+ include "cookie.php"; 
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,7 +43,7 @@
             <li class="<?php print $this->input->get('cvideos_admin');?>"><a href="cadminf?media=v&cvideos_admin=active">Videos</a></li>
             <li class="<?php print $this->input->get('cplaylists_admin');?>"><a href="cadminf?media=p&cplaylists_admin=active">Playlists</a></li>
             <li><button type="button" class="btn btn-success" id="btn-get-data" style="margin: 0 10px;">Get Data</button></li>
-            <li><a href="<?php echo "http://{$base_url}index.php/Cadmin/clogin?authentication=false";?>"><span class="glyphicon glyphicon-user" id="admin_login"> Logout</span></a></li>
+            <li><a href="<?php echo "{$base_url}index.php/Cadmin/clogin?authentication=false";?>"><span class="glyphicon glyphicon-user" id="admin_login"> Logout</span></a></li>
           </ul>
         </div>
       </div>

@@ -1,5 +1,14 @@
 <?php 
-echo file_get_contents("http://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA");
+
+$test = "oke";
+
+function test()
+{
+	global $test;
+
+	echo $test;
+}
 
 
-?>
+test();
+ ?>

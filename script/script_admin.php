@@ -1,7 +1,7 @@
 <?php 
 function base_url()
 {
-  return "http://$_SERVER[SERVER_NAME]/project/flaytube.com/";
+  return "http://$_SERVER[SERVER_NAME]/project/flaytube.com2";
 }
 
 ?>
@@ -44,33 +44,33 @@ loaderHide();
         if(response == "success"){
             
             $.ajax({
-              url    : "<?php echo base_url() . '/index.php/Ctesturl/ctesturlf';?>",
+              url    : "<?php echo base_url() . '/index.php/Csavedb/csavedbcolumn';?>",
               data   : data+`&kategory=${kategory}`,
               success: function(response){
                 loaderHide();
 
                 if(response == "success"){
-                  alert("success menambah data, semua data videos dan playlists akan autoupdate setiap 10 menit, klik tombol get data untuk mendapatkan data secara manual");
-                  window.location.href = window.location.href;
+                  console.log("success menambah data, semua data videos dan playlists akan autoupdate setiap 10 menit, klik tombol get data untuk mendapatkan data secara manual");
+                  // //window.location.href = //window.location.href;
                 }else {
-                  alert("Gagal menambah url chanel, mungkin terjadi duplicate, atau mungkin salah memasukkan url atau koneksi internet terputus");
+                  console.log("Gagal menambah url chanel, mungkin terjadi duplicate, atau mungkin salah memasukkan url atau koneksi internet terputus");
                 }
               }
             }).fail(function(){
               loaderHide();
-              alert("gagal menambah url chanel, silakan ulangi request!");
+              console.log("gagal menambah url chanel, silakan ulangi request!");
             }).always(function(){
               loaderHide();
             });
           
         }else{
-          alert("Gagal menambah url chanel, mungkin terjadi duplicate, atau mungkin salah memasukkan url atau koneksi internet terputus");
+          console.log("Gagal menambah url chanel, mungkin terjadi duplicate, atau mungkin salah memasukkan url atau koneksi internet terputus");
         }
       }
       
     }).fail(function(){
       loaderHide();
-      alert("gagal menambah url chanel, silakan ulangi request!");
+      console.log("gagal menambah url chanel, silakan ulangi request!");
     }).always(function(){
       loaderHide();
     })
@@ -98,12 +98,12 @@ modal_get_data.hide();
       success: function(response){
         loader_get_data.gSpinner("hide");
         modal_get_data.hide();
-        alert("Berhasil mengupdate data chanel");
+        console.log("Berhasil mengupdate data chanel");
         This.css('background-color');
-        window.location.href = window.location.href;
+        // //window.location.href = //window.location.href;
       }
     }).fail(function(){
-      alert("Gagal mengupdate data chanel");
+      console.log("Gagal mengupdate data chanel");
       loader_get_data.gSpinner("hide");
     }).always(function(){
       loader_get_data.gSpinner("hide");
@@ -127,14 +127,14 @@ modal_get_data.hide();
         url : href,
         success: function(response){
           if(response == "success"){
-            alert("Data Berhasil Di Hapus");
-            window.location.href = window.location.href;
+            console.log("Data Berhasil Di Hapus");
+            //window.location.href = //window.location.href;
           }else {
-            alert("Gagal Menghapus Data, Silakan Coba Lagi!");
+            console.log("Gagal Menghapus Data, Silakan Coba Lagi!");
           }
         }
       }).fail(function(){
-        alert("Gagal Terhubung Ke Server")
+        console.log("Gagal Terhubung Ke Server")
       })
     }
     
@@ -156,14 +156,14 @@ modal_get_data.hide();
       type: "POST",
       success: function(response){
         loaderHide();
-        alert(response);
+        console.log(response);
       }
     }).fail(function(){
       loaderHide();
-      alert("Gagal mengambil response yang diberikan");
+      console.log("Gagal mengambil response yang diberikan");
     }).always(function(){
       loaderHide();
-      alert("berhasil menambah data videos dari response yang diberikan");
+      console.log("berhasil menambah data videos dari response yang diberikan");
     })
   })
 
@@ -183,14 +183,14 @@ modal_get_data.hide();
       type : "POST",
       success : function(response){
         loaderHide();
-        alert(response);
+        console.log(response);
       }
     }).fail(function(){
       loaderHide();
-      alert("Gagal mengambil response yang diberikan");
+      console.log("Gagal mengambil response yang diberikan");
     }).always(function(){
       loaderHide();
-      alert("berhasil menambah data videos dari response yang diberikan");
+      console.log("berhasil menambah data videos dari response yang diberikan");
     })
   })
 

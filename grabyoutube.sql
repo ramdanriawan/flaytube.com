@@ -1,22 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Oct 04, 2017 at 12:27 AM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Dec 02, 2017 at 12:09 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.5.37
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id1991798_grabyoutube`
+-- Database: `grabyoutube`
 --
 
 -- --------------------------------------------------------
@@ -25,13 +26,12 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `email` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -46,24 +46,25 @@ INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
 -- Table structure for table `chanel`
 --
 
-CREATE TABLE IF NOT EXISTS `chanel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `chanel` (
+  `id` int(11) NOT NULL,
   `link` varchar(200) NOT NULL,
   `logo` varchar(200) DEFAULT NULL,
   `name` varchar(200) NOT NULL,
   `subscriber` varchar(110) NOT NULL,
   `videos` varchar(200) NOT NULL,
   `playlists` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `kategory` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `chanel`
 --
 
-INSERT INTO `chanel` (`id`, `link`, `logo`, `name`, `subscriber`, `videos`, `playlists`) VALUES
-(15, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'https://yt3.ggpht.com/-XRHoroFCkyg/AAAAAAAAAAI/AAAAAAAAAAA/oYjwbmm1HwY/s100-c-k-no-mo-rj-c0xffffff/photo.jpg', 'Sekolah Koding', '21.691', 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA/videos', 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA/playlists'),
-(16, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'https://yt3.ggpht.com/-b7VTkuhdsfc/AAAAAAAAAAI/AAAAAAAAAAA/uaTBw8u-r8Y/s100-c-k-no-mo-rj-c0xffffff/photo.jpg', 'JuniorDev', '3.972', 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA/videos', 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA/playlists');
+INSERT INTO `chanel` (`id`, `link`, `logo`, `name`, `subscriber`, `videos`, `playlists`, `kategory`) VALUES
+(16, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', '/yts/img/avatar_720-vflYJnzBZ.png', '', '', 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA/videos', 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA/playlists', ''),
+(20, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'https://yt3.ggpht.com/-gJv8ZL2MxOY/AAAAAAAAAAI/AAAAAAAAAAA/n1dqXEus3xk/s100-c-k-no-mo-rj-c0xffffff/photo.jpg', 'coderindo', '23', 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw/videos', 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw/playlists', 'Education'),
+(21, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'https://yt3.ggpht.com/-XRHoroFCkyg/AAAAAAAAAAI/AAAAAAAAAAA/oYjwbmm1HwY/s100-c-k-no-mo-rj-c0xffffff/photo.jpg', 'Sekolah Koding', '24.642', 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA/videos', 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA/playlists', 'Education');
 
 -- --------------------------------------------------------
 
@@ -71,16 +72,15 @@ INSERT INTO `chanel` (`id`, `link`, `logo`, `name`, `subscriber`, `videos`, `pla
 -- Table structure for table `playlists`
 --
 
-CREATE TABLE IF NOT EXISTS `playlists` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `playlists` (
+  `id` int(11) NOT NULL,
   `chanel` varchar(200) NOT NULL,
   `name` varchar(100) NOT NULL,
   `gambar` text NOT NULL,
   `judul` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL,
-  `total_videos` int(3) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=259 ;
+  `total_videos` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `playlists`
@@ -229,16 +229,15 @@ INSERT INTO `playlists` (`id`, `chanel`, `name`, `gambar`, `judul`, `link`, `tot
 -- Table structure for table `videos`
 --
 
-CREATE TABLE IF NOT EXISTS `videos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `videos` (
+  `id` int(11) NOT NULL,
   `chanel` varchar(200) NOT NULL,
   `name` varchar(100) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `judul` varchar(200) NOT NULL,
   `link` varchar(255) NOT NULL,
-  `time` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=874 ;
+  `time` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `videos`
@@ -911,8 +910,123 @@ INSERT INTO `videos` (`id`, `chanel`, `name`, `gambar`, `judul`, `link`, `time`)
 (870, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/5CCu1xg0ero/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBMTIVA09xluQFFZoLaLeTBjLnIxA', '0 intro dan install slim', 'http://youtube.com/watch?v=5CCu1xg0ero&t=10s', '4:52'),
 (871, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/8lGGHekMf_g/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCQOk2elC1IVb0qxgwXaSxOtc2lqA', 'Behind the website - stickerdev -', 'http://youtube.com/watch?v=8lGGHekMf_g', '8:42'),
 (872, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/UdVxfoDgMYw/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAF4iyzXrZ3WgSxTpgwwwwcOTEQNA', '03 constant array dan group use', 'http://youtube.com/watch?v=UdVxfoDgMYw', '4:37'),
-(873, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/BJYwIlZXEPE/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLA4b6Jbds6hnJ2c66VfmJ8A-JEp_A', '02 spaceship operator dan null coalesce', 'http://youtube.com/watch?v=BJYwIlZXEPE', '4:26');
+(873, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/BJYwIlZXEPE/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLA4b6Jbds6hnJ2c66VfmJ8A-JEp_A', '02 spaceship operator dan null coalesce', 'http://youtube.com/watch?v=BJYwIlZXEPE', '4:26'),
+(874, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/GL0HqYGrWZo/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAgbbVBW84B7Trn3lVOeQrmG8ApMA', 'Membuat Game 3D Multiplayer Unity & Photon (Part 28) - Koding Gameplay NPC', 'http://youtube.com/watch?v=GL0HqYGrWZo', '24:59'),
+(875, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/JCruue1idaY/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBdYnoYgl0xSCOet8sD5NQasi4zMQ', 'Membuat Game 3D Multiplayer Unity & Photon (Part 27) - Koding Sinkronisasi Player', 'http://youtube.com/watch?v=JCruue1idaY', '17:43'),
+(876, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/CdN2tUr1cIU/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDCcHLqABS2We_W26qHxDokDJ-M9Q', 'Membuat Game 3D Multiplayer Unity & Photon (Part 26) - Koding Gameplay Player', 'http://youtube.com/watch?v=CdN2tUr1cIU', '18:13'),
+(877, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/kI7ESMzLlcQ/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDqc7HkX_NTGd8yOacypLHGUevcWA', 'Membuat Game 3D Multiplayer Unity & Photon (Part 25) - Koding Reference Player', 'http://youtube.com/watch?v=kI7ESMzLlcQ', '16:50'),
+(878, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/kr-_LfIDbLo/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDcL7CYc3DAPTZbt1uSAFRmJKTnJA', 'Membuat Game 3D Multiplayer Unity & Photon (Part 24) - Koding Tembakan & Ledakan', 'http://youtube.com/watch?v=kr-_LfIDbLo', '15:15'),
+(879, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/LpOWYAfFwwg/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDTJrwLCU0jaULXrgvBpxVPIfZrhg', 'Membuat Game 3D Multiplayer Unity & Photon (Part 23) - Koding Kamera & Gerakan Player', 'http://youtube.com/watch?v=LpOWYAfFwwg', '18:30'),
+(880, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/E7MCti4_mR0/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDJpzf4mB5mLIZ3xaDNVHq3Px_VvQ', 'Membuat Game 3D Multiplayer Unity & Photon (Part 22) - Koding Aturan Multiplayer', 'http://youtube.com/watch?v=E7MCti4_mR0', '25:13'),
+(881, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/4XV0BAvzyoY/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAra1xqtzQlnvn4L3ClviNNICy4UA', 'Membuat Game 3D Multiplayer Unity & Photon (Part 21) - Koding Output UI & Setting', 'http://youtube.com/watch?v=4XV0BAvzyoY', '26:02'),
+(882, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/8tafTdNrA6E/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLC5t0eAmD4H-vei8vdjUnAwq7vynw', 'Membuat Game 3D Multiplayer Unity & Photon (Part 20) - UI Menang Kalah', 'http://youtube.com/watch?v=8tafTdNrA6E', '23:32'),
+(883, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/qPTRIkjw0j4/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDuKrxB76OTf15GkRFVr9nmlj2JDA', 'Membuat Game 3D Multiplayer Unity & Photon (Part 19) - Efek pada Player & NPC', 'http://youtube.com/watch?v=qPTRIkjw0j4', '26:28'),
+(884, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/tSeCn5dBSU8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDhoreLjIPwBFq_h0LQw6G4rLJmKw', 'Membuat Game 3D Multiplayer Unity & Photon (Part 18) - PhotonView dan Shot', 'http://youtube.com/watch?v=tSeCn5dBSU8', '22:18'),
+(885, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/jpyYI6pONuE/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCx18TZL9-qClg8zROGhgty4jWNTQ', 'Membuat Game 3D Multiplayer Unity & Photon (Part 17) - Pembatas dan Penanda', 'http://youtube.com/watch?v=jpyYI6pONuE', '20:01'),
+(886, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/bGAuoZ_aF8Y/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLB57FG-Aaf9RyLofpZ0o8jw9EURDg', 'Membuat Game 3D Multiplayer Unity & Photon (Part 16) - Karakter Player & NPC', 'http://youtube.com/watch?v=bGAuoZ_aF8Y', '27:57'),
+(887, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/GEzmXo3Bus8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLD8M-_Z9uPck0THYnNx_x1yyY8LJg', 'Membuat Game 3D Multiplayer Unity & Photon (Part 15) - UI Lanjutan', 'http://youtube.com/watch?v=GEzmXo3Bus8', '24:50'),
+(888, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/hS5YdDCHkQY/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBDWvh-Rz2ByNuxxStW3XyPbgcyJw', 'Membuat Game 3D Multiplayer Unity & Photon (Part 14) - UI Level 1', 'http://youtube.com/watch?v=hS5YdDCHkQY', '26:16'),
+(889, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/pytufOUIUdg/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLD8zQp0RxCnHANvHnqia1gzeSkNFw', 'Membuat Game 3D Multiplayer Unity & Photon (Part 13) - Environment Level 1', 'http://youtube.com/watch?v=pytufOUIUdg', '33:24'),
+(890, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/aXK6472-HFc/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBXZIrWu3-1TxFiKT8elwL_5Ruy7w', 'Membuat Game 3D Multiplayer Unity & Photon (Part 12) - Membenahi UI & Scene', 'http://youtube.com/watch?v=aXK6472-HFc', '36:25'),
+(891, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/6dvGSmbdK-g/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDVqAK250HidWjMqJl7PK7_VVA_FA', 'Manipulasi CSS pada Elemen | Tutorial jQuery (part 12)', 'http://youtube.com/watch?v=6dvGSmbdK-g', '15:45'),
+(892, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/CP_jSVBUpys/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDE3sWi6PUVRrC919m7uSp0vl4myA', 'Manipulasi Class pada Elemen | Tutorial jQuery (part 11)', 'http://youtube.com/watch?v=CP_jSVBUpys', '30:59'),
+(893, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/NYEtyvxgSAk/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLB7kxP7oRdlOYwp-wNC6w6od0HEnA', 'Mengganti Cursor dan Custom Cursor | Tutorial CSS (part 20)', 'http://youtube.com/watch?v=NYEtyvxgSAk', '19:11'),
+(894, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/XrIgkgrtqYE/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBH9_0Pp3sfIH-2piMGHDn1rf_q0Q', 'Mengubah Template Tema Blogspot / Blogger | Tutorial Blogger (part 13/13)', 'http://youtube.com/watch?v=XrIgkgrtqYE', '14:27'),
+(895, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/MZk2H8J6HD8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCrM-0p7QSANmLoFDBlSOE5aG4wGQ', 'Memasang Gadget dan Tata Letak di Blogspot / Blogger | Tutorial Blogger (part 12/13)', 'http://youtube.com/watch?v=MZk2H8J6HD8', '13:21'),
+(896, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/nybycLqugnM/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBV2rgWAlHj0cETf70-Zvs9m2D7cA', 'Mengubah Favicon dan Background Header di Blogspot / Blogger | Tutorial Blogger (part 11/13)', 'http://youtube.com/watch?v=nybycLqugnM', '6:36'),
+(897, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/981LQUlN1R4/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCa8MVlmNfS3wZZFk1GdB-nvvW_Vw', 'Membuat Halaman di Blogspot / Blogger | Tutorial Blogger (part 10/13)', 'http://youtube.com/watch?v=981LQUlN1R4', '7:50'),
+(898, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/5rB4COag0oQ/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDJY8UgS6nFyIBDaswr0UbnniRr8w', 'Menambah Komentar dan Manajemen Komentar Blogspot / Blogger | Tutorial Blogger (part 9/13)', 'http://youtube.com/watch?v=5rB4COag0oQ', '9:13'),
+(899, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/1lA9rmfZRf8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCuGx4BHS3LWrcX0CKXVsg87lcN9A', 'Menambahkan Label / Tags dan Setting di Postingan Blogspot / Blogger | Tutorial Blogger (part 8/13)', 'http://youtube.com/watch?v=1lA9rmfZRf8', '8:30'),
+(900, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/Z92wO3Epstc/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAmwth-th3M4wASA2kXmPbT_h3b4Q', 'Menambahkan Kode HTML dan Google Maps di Postingan Blogspot / Blogger | Tutorial Blogger (part 7/13)', 'http://youtube.com/watch?v=Z92wO3Epstc', '13:02'),
+(901, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/5x-3aC9z8SA/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBPFVl-lxhuGwa-2LTlkpPxBCLV6w', 'Cara Download Playlist Video di Youtube dengan IDM', 'http://youtube.com/watch?v=5x-3aC9z8SA', '6:35'),
+(902, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/kab-0XjWU78/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBZv8mFQRWDOJPEigR48ZU4sH9IQQ', 'Membuat Aplikasi Kuis Essai/Isian dengan Adobe Flash dan Actionscript 3', 'http://youtube.com/watch?v=kab-0XjWU78', '31:19'),
+(903, 'https://www.youtube.com/channel/UCvaOvKG4sm5XzV78OqEDUjA', 'JuniorDev', 'https://i.ytimg.com/vi/gegEJd3sycw/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCKriTJJhvy0E6iOCj4SvQRdxXP1w', 'Demo Game 3D Multiplayer menggunakan Unity + Photon Engine + Pathfinding A* / A star', 'http://youtube.com/watch?v=gegEJd3sycw', '16:24'),
+(904, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/ngYOG4amvoA/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDLvSbbUURbr9EmBti94cNtyEgY7Q', '13. pass by value and pass by reference in function -  tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=ngYOG4amvoA', '4:13'),
+(905, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/ncLe7afo9qc/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLArMlQFqEQjRcVxBPuB5tfOb7rA3w', '14. scope variabel, global variabel, static variabel - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=ncLe7afo9qc', '5:13'),
+(906, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/jbD9o_9d2l0/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLB4S_cUBjiO_p3DtAiRiw_W_oomnQ', '15. Melakukan Pengecekan Tipe Data Pada Argumen Fungsi - Tutorial basic Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=jbD9o_9d2l0', '9:43'),
+(907, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/4_8BioWSTnI/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAAm4N5-BezQ2JDUDlkx9J0CLpz3w', '16. belajar tentang anonymouse function pada php - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=4_8BioWSTnI', '9:17'),
+(908, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/Ir-HUYQGNrI/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCUosxYSFMEqdsSiv4ApwAdW9qKiA', '19. belajar assosiatif array di php - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=Ir-HUYQGNrI', '6:32'),
+(909, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/QjzfoNClfs4/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDcawAOATw_qMCjTBxM1tHQcwysoQ', '20.  array multidimensi - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=QjzfoNClfs4', '15:29'),
+(910, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/ovGwZt54nao/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDQAVRk2EV0CTLP6NFn5UoFVMVMjA', '17. belajar memanggil fungsi lain di dalam fungsi lain-tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=ovGwZt54nao', '5:14'),
+(911, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/DkclBYSqwuQ/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLB8WK-t1J5onkPxQqV2HC047g-taQ', '18. belajar array  juga  perulagan for dan foreach - tutorial  basic php mudah dimengerti', 'http://youtube.com/watch?v=DkclBYSqwuQ', '6:46'),
+(912, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/y462YawDRlI/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDD10iOThsyG86HtJQENSR3k3KuGg', '21. sorting array 1 dimensi dan 2 dimensi - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=y462YawDRlI', '12:15'),
+(913, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/28zQ8Zo9y84/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAU9VucQA3wMQnZEo6Pc6DHGeScCw', '23. belajar perintah goto di php - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=28zQ8Zo9y84', '1:46'),
+(914, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/7S3Ahk4vzn8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCyVd7gj1aVUHaC9IxFWsNjPIbTJg', '24. belajar control structure di php - tutorial basic  php komplit mudah dimengerti', 'http://youtube.com/watch?v=7S3Ahk4vzn8', '5:37'),
+(915, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/OXkpbmHWPWw/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDtGcOxcU6jftsq6gmdK1FfMqjimA', '26.  fungsi heredoc pada php -  tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=OXkpbmHWPWw', '3:51'),
+(916, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/3MZZ5YlrUME/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDupRslsekr8yR_lj-rD_ueQJZjQQ', '29. fungsi built in get defined dan get declared - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=3MZZ5YlrUME', '8:42'),
+(917, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/9-E17KcskYo/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDGLlw2K8Di_L604QtwBi20M45g1w', '25. include include once require require once  - tutorial basic  php komplit mudah dimengerti', 'http://youtube.com/watch?v=9-E17KcskYo', '6:39'),
+(918, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/cJrmLl6iwdU/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDRUQAQTNHQixXj3ZOmb1I_XsaXRg', '27.  die dan var dump pada php -  tutorial basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=cJrmLl6iwdU', '3:33'),
+(919, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/pNFa7sHzQ7o/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDs7WeYfC02AZGBCFpHqxpwFWJMmg', '22. Operasi pada assosiatif array - tutorial basic  php komplit mudah dimengerti', 'http://youtube.com/watch?v=pNFa7sHzQ7o', '6:29'),
+(920, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/dpHl1ktuey8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDEJbx_2VDm53TXVdwOI8v7Tzr0uA', '30. Referensi belajar php dan penutupan - tutorial  basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=dpHl1ktuey8', '11:12'),
+(921, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/cJUe6qTrsGU/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAWUicJZsnjFQUxFJFnwtAzupoK0g', '28.  variable di string pada php -  tutorial basic  php komplit mudah dimengerti', 'http://youtube.com/watch?v=cJUe6qTrsGU', '4:28'),
+(922, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/3AekflUOK7o/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBebIINE-flCAy588q9amQOuGuLfQ', '12. Function, Argumen, Default Argument, Dan Return - Tutorial basic Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=3AekflUOK7o', '12:26'),
+(923, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/r65k_phPjEQ/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAjG3eQJPDEqvvoyqfSqzP5Crl_8Q', '11. Perintah Break Dan Continue Untuk Perulangan  - Tutorial basic Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=r65k_phPjEQ', '2:56'),
+(924, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/vdZxTYkvgF8/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDu1OfPKzdQn39ZiHiuWYe0Nlv7YQ', '10. Belajar Perulangan For Pada Php - Tutorial basic Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=vdZxTYkvgF8', '2:25'),
+(925, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/vp2MSvogh6o/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCmUl4su2jjpFrphZ-EHulzaKilbg', '9. Do While Dan Perbedaannya Dengan While - Tutorial basic Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=vp2MSvogh6o', '4:45'),
+(926, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/k1HcNM59MHo/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAP7RGXBhd5eVKe38AKH-WGTrQLiQ', '8. Belajar Perulangan While Pada Php - Tutorial basic Php Komplit Mudah Dimengerti 1', 'http://youtube.com/watch?v=k1HcNM59MHo', '3:46'),
+(927, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/gC9aG0v3hzM/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDSR5Yk--j-IrHKXputyk0PwKqgpw', '7. Switch Case Pada Php  - Tutorial basic Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=gC9aG0v3hzM', '6:16'),
+(928, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/ecESxFTTOkc/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLAeHSkEQGN-ozXl_OWg73VtBjA8_A', '6 . Lebih Lengkap Tentang If Else, If Else If - Tutorial php komplit mudah di mengerti', 'http://youtube.com/watch?v=ecESxFTTOkc', '24:06'),
+(929, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/AuaOqavB_2Y/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLB4vq2dos58lxX4Ou1v3m0IwBY9_w', '5. macam macam operator pada php-tutorial php komplit mudah dimengerti', 'http://youtube.com/watch?v=AuaOqavB_2Y', '30:22'),
+(930, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/kWLg6sOo2gU/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCLDee1B_fLTrYR3kvzkyxDjZ4Lyw', '4 .Tipe Data Pada Bahasa Pemrograman Php  -Tutorial Php Komplit Mudah Dimengerti 1', 'http://youtube.com/watch?v=kWLg6sOo2gU', '10:15'),
+(931, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/8GV4_TTAZHQ/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLB_le7v2-ryEYXsuhPzXEbjxrmIJg', '3.  Komentar Pada Php - Tutorial Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=8GV4_TTAZHQ', '5:58'),
+(932, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/tCS3vkCz-PU/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCifAS-b2dMJNTWu_XY95e9fLaELg', '2.  Cara Membuat Variable Dan Konstanta Serta Perbedaannya  - Tutorial Php Komplit Mudah Dimengerti', 'http://youtube.com/watch?v=tCS3vkCz-PU', '16:06'),
+(933, 'https://www.youtube.com/channel/UCj5fs1IWb4NBkATo_HkVwOw', 'coderindo', 'https://i.ytimg.com/vi/yJ3iOQ6HofI/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBtHfYE2drb8ADSh1FvzziNrVCvEw', '1.  pengenalan dasar php dan fungsi pertama - tutorial basic php komplit mudah dimengerti', 'http://youtube.com/watch?v=yJ3iOQ6HofI', '10:48'),
+(934, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/h07K80AR6BQ/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLCnWXesdfKCssJdcPVWrH73ErCJQw', 'episode terakhir  - Menerima yang udah lewat', 'http://youtube.com/watch?v=h07K80AR6BQ', '9:35'),
+(935, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/NQ7hMrywt_w/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLBtANZVyntFKl3po1U_D89IsXQkbw', 'Bahasa daerah dan Bahasa Program', 'http://youtube.com/watch?v=NQ7hMrywt_w', '1:37'),
+(936, 'https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA', 'Sekolah Koding', 'https://i.ytimg.com/vi/yYo_BiqAzbA/hqdefault.jpg?sqp=-oaymwEWCMQBEG5IWvKriqkDCQgBFQAAiEIYAQ==&rs=AOn4CLDJqha2RCtEDQtsPiok8D7xMROWSw', 'Episode 14 - Waktu untuk berpikir', 'http://youtube.com/watch?v=yYo_BiqAzbA', '11:02');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chanel`
+--
+ALTER TABLE `chanel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `chanel`
+--
+ALTER TABLE `chanel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=937;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -32,7 +32,7 @@
       $start        = (int) ceil(($page * $limit) - $limit) + 1;
     }
     
-    $hasil        = $this->Mindex->show($table, $column_order, $order_by, $start, $limit);
+    $hasil      = $this->Mindex->show($table, $column_order, $order_by, $start, $limit);
     $data_total = $this->db->query("select * from $table");
     $page_total = ceil($data_total->num_rows() / $limit);
     

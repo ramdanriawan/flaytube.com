@@ -1,8 +1,12 @@
 <?php
+
 //require library
 require_once("phpQuery/phpQuery/phpQuery.php");
 
 //echo file_get_contents("https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA");
+
+//library untuk menimpan link base url
+
 
 //fungsi untuk mendapatkan informasi chanel
 function chanelinfo($chanel){
@@ -10,22 +14,22 @@ function chanelinfo($chanel){
 	$get = file_get_contents($chanel);
 	//echo $get;
 	//data chanel 
-	$dom = phpQuery::newDocument($get);
-	$list = pq(".branded-page-v2-header.channel-header.yt-card");
-	$logo = $list->find(".channel-header-profile-image");
-	$name = $list->find(".spf-link.branded-page-header-title-link.yt-uix-sessionlink");
+	$dom        = phpQuery::newDocument($get);
+	$list       = pq(".branded-page-v2-header.channel-header.yt-card");
+	$logo       = $list->find(".channel-header-profile-image");
+	$name       = $list->find(".spf-link.branded-page-header-title-link.yt-uix-sessionlink");
 	$subscriber = $list->find(".yt-subscription-button-subscriber-count-branded-horizontal.subscribed.yt-uix-tooltip");
-	$videos = "$chanel/videos";
-	$playlists = "$chanel/playlists";
+	$videos     = "$chanel/videos";
+	$playlists  = "$chanel/playlists";
 
 	//masukkan data ke dalam array 
 	$data = array(
-		"link" => $chanel,
-		"logo" => $logo->eq(0)->attr("src"),
-		"name"=>$name->eq(0)->text(),
-		"subscriber"=> $subscriber->eq(0)->text(),
-		"videos"=>$videos,
-		"playlists"=>$playlists
+		"link"       => $chanel,
+		"logo"       => $logo->eq(0)->attr("src"),
+		"name"       => $name->eq(0)->text(),
+		"subscriber" => $subscriber->eq(0)->text(),
+		"videos"     => $videos,
+		"playlists"  => $playlists
 	);
 
 	//print untuk melihat data
@@ -36,7 +40,7 @@ function chanelinfo($chanel){
 	$data = http_build_query($data, "", "&");
 
 	//gabungkan url save db chanel dengan field
-	$data_get = "{$base_url}index.php/Csavedb/csavedbf?media=c&" . $data;
+	$data_get = base_url() . "index.php/Csavedb/csavedbf?media=c&" . $data;
 
 	//tampilkan data hasil dari request ajax
 		echo "status: " . file_get_contents($data_get);
@@ -45,6 +49,7 @@ function chanelinfo($chanel){
 
 //fungsi untuk grab semuda data videos
 function grabyoutubevideos($chanel){
+	global $base_url;
 	//data get
 	$url = "$chanel/videos";
 	$get    = file_get_contents($url);
@@ -78,7 +83,7 @@ function grabyoutubevideos($chanel){
 		$data      = http_build_query($data, "", "&");
 
 		//gabungkan url save db dengan data field
-		$data_get = "{$base_url}index.php/Csavedb/csavedbf?media=v&" . $data;
+		$data_get = base_url() . "index.php/Csavedb/csavedbf?media=v&" . $data;
 
 		//tampilkan data hasil dari request ajax
 		echo "status: " . file_get_contents($data_get);
@@ -90,6 +95,7 @@ function grabyoutubevideos($chanel){
 
 //fungsi untuk mendapatkan data grab playlists
 function grabyoutubeplaylists($chanel){
+	global $base_url;
 	$url = "$chanel/playlists";
 	$get = file_get_contents($url);
 
@@ -121,7 +127,7 @@ function grabyoutubeplaylists($chanel){
 		$data     = http_build_query($data, "", "&");
 
 		//gabungkan url save db dengan data field
-		$data_get = "{$base_url}index.php/Csavedb/csavedbf?media=p&" . $data;
+		$data_get = base_url() . "index.php/Csavedb/csavedbf?media=p&" . $data;
 
 		//tampilkan data hasil dari request ajax
 		//echo "status: " . file_get_contents($data_get);
@@ -136,8 +142,9 @@ foreach ($hasil["data"] as $key => $value) {
 	//panggil dan oper nilai url dari masing masing chanel
 
 	  chanelinfo($value->link);
-	  grabyoutubevideos($value->link);
-	  grabyoutubeplaylists($value->link);
+	  echo file_get_contents("https://www.youtube.com/channel/UCpSPS5yLCxYRuZSrCx-eBjA");
+	  // grabyoutubevideos($value->link);
+	  // grabyoutubeplaylists($value->link);
 
 	print "<p> ==================== end chanel ke-$key ====================";
 }

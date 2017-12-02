@@ -36,9 +36,9 @@ abstract class phpQuery {
 	 * 
 	 * @var bool
 	 */
-	public static $mbstringSupport = true;
-	public static $debug = false;
-	public static $documents = array();
+	public static $mbstringSupport   = true;
+	public static $debug             = false;
+	public static $documents         = array();
 	public static $defaultDocumentID = null;
 //	public static $defaultDoctype = 'html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"';
 	/**
